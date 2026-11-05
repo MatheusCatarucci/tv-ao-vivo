@@ -1,93 +1,174 @@
-# TV ao vivo · Globo
+# 📺 TV ao Vivo — Stream de Canais BR
 
-Player simples de TV ao vivo no navegador. Carrega canais brasileiros da [API do iptv-org](https://iptv-org.github.io/api/) e reproduz transmissões com **hls.js** (HLS / .m3u8).
+> Assista canais ao vivo direto no navegador. Sem cadastro complicado, sem backend, apenas **login rápido** (`admin` / `admin`) e você está dentro.
 
-👉 [Acesse a demonstração](https://SEU-USUARIO.github.io/tv-globo/)
+<div align="center">
 
----
+[![Status](https://img.shields.io/badge/status-em%20desenvolvimento-orange?style=for-the-badge)](https://github.com)
+[![Frontend](https://img.shields.io/badge/frontend-HTML%20%2B%20JS-blue?style=for-the-badge)](https://developer.mozilla.org)
+[![CSS Modular](https://img.shields.io/badge/css-modular-purple?style=for-the-badge)](https://developer.mozilla.org)
+[![HLS.js](https://img.shields.io/badge/player-hls.js-red?style=for-the-badge)](https://github.com/video-dev/hls.js)
+[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
 
-## O que faz
-
-- Lista canais de TV do Brasil (filtro por Globo / Todos do Brasil)
-- Busca por nome de canal
-- Reproduz streams HLS (.m3u8) com múltiplas fontes por canal (tenta a próxima se uma falhar)
-- Overlay com status: carregando, ao vivo, sem sinal
-- Campo para colar um **link direto** de stream (.m3u8 ou .mp4)
-- Canais de teste integrados (fallback) caso a API não responda
+</div>
 
 ---
 
-## Como usar
+## ✨ Funcionalidades
 
-### 1. Abra o arquivo localmente
+| Recurso | Descrição |
+|---------|-----------|
+| 🔐 **Login simples** | Usuário `admin`, senha `admin`. Sessão salva no navegador. |
+| 🚪 **Sair a qualquer hora** | Botão **Sair** no topo para encerrar a sessão. |
+| 📺 **Canais com sinal** | Apenas canais que realmente possuem stream disponível são exibidos. |
+| 🔍 **Busca instantânea** | Digite no campo de busca e filtre os canais na hora. |
+| 🔗 **Link direto** | Cole qualquer `.m3u8` ou `.mp4` e assista na hora. |
+| 📱 **Responsivo** | Funciona no celular, tablet e desktop. |
+| 🌙 **Dark mode** | Tema escuro moderno com fundo degradê e glassmorphism. |
 
-Basta abrir o arquivo `tv-globo.html` em qualquer navegador moderno:
+---
+
+## 🖼️ Preview
+
+<div align="center">
+
+### 🔐 Tela de Login
+
+![Tela de login](https://media.giphy.com/media/3o7aCSPqXE586TIIhG/giphy.gif)
+
+*Entre com `admin` / `admin` para acessar.*
+
+</div>
+
+<div align="center">
+
+### 📺 Menu de Canais
+
+![Menu de canais](https://media.giphy.com/media/l0HlN3pEh5x2V65QA/giphy.gif)
+
+*Todos os canais com sinal disponível, prontos para assistir.*
+
+</div>
+
+> 💡 **Dica:** Substitua os GIFs acima por capturas reais do seu projeto para deixar ainda mais incrível!
+
+---
+
+## 🚀 Começando em 30 segundos
+
+### 1. Clone ou baixe
 
 ```bash
-# no mesmo diretório
-start tv-globo.html   # Windows
-open tv-globo.html    # macOS
-xdg-open tv-globo.html # Linux
+git clone https://github.com/seu-usuario/tv-ao-vivo.git
+cd tv-ao-vivo
 ```
 
-Ou abra direto no navegador clicando duas vezes no arquivo.
+### 2. Abra o projeto
 
-### 2. Hospede no GitHub Pages (grátis)
+Basta abrir o `index.html` no navegador:
 
-1. Crie um repositório público no GitHub, ex. `tv-globo`
-2. Envie o arquivo `tv-globo.html` para a raiz do repositório
-3. Vá em **Settings > Pages**
-4. Em **Build and deployment > Source**, selecione **Deploy from a branch**
-5. Escolha a branch `main` e a pasta `/ (root)`
-6. Clique em **Save**
+```bash
+# Windows
+start index.html
 
-Após alguns instantes, seu player estará disponível em:
-`https://seu-usuario.github.io/tv-globo/`
+# macOS
+open index.html
 
----
-
-## Estrutura do projeto
-
-```
-tv-globo/
-└── tv-globo.html   # Único arquivo: HTML + CSS + JS
+# Linux
+xdg-open index.html
 ```
 
-Não há dependências para instalar. O único recurso externo é a biblioteca [hls.js](https://github.com/video-dev/hls.js) carregada via CDN.
+Ou simplesmente dê **duplo clique** no arquivo `index.html`.
+
+> ⚠️ Para usar os scripts em módulo (`type="module"`), recomenda-se servir via HTTP (ex: [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) do VS Code).
+
+### 3. Faça login
+
+- **Usuário:** `admin`
+- **Senha:** `admin`
+
+Pronto! Você está dentro. 🎉
 
 ---
 
-## Canais de teste
+## 📁 Estrutura do projeto
 
-Quando a API de canais não responde ou não retorna sinal, o app mostra automaticamente canais de teste para você verificar se o player está funcionando:
-
-- **Sintel · teste de reprodução** (720p)
-- **Big Buck Bunny · teste de reprodução** (1080p)
-
-Esses streams são públicas e servem apenas para validar a reprodução.
-
----
-
-## ⚠️ Limitações importantes
-
-- **Canais de TV aberta gratuitos são instáveis.** Os links públicos da API iptv-org saem do ar ou bloqueiam reprodução de outros sites (CORS) com frequência. Se nenhum canal tocar, tente o botão **"Tentar novamente"** ou cole um link direto de uma stream que saiba que funciona.
-- **CORS:** algumas transmissões só funcionam se o servidor de origem permitir requisições de outros domínios. Isso está fora do controle deste player.
-- **HTTPS:** se você hospedar em HTTPS, streams em `http://` são ignoradas pelo navegador por segurança. Use apenas links `https://`.
-
----
-
-## Tecnologias
-
-- HTML5 + CSS3 (puro, sem framework)
-- [hls.js](https://github.com/video-dev/hls.js) via CDN (reprodução de HLS)
-- API [iptv-org](https://iptv-org.github.io/api/) (lista de canais e streams)
+```
+tv-ao-vivo/
+├── index.html                 # Shell HTML principal
+├── README.md
+└── assets/
+    ├── css/
+    │   ├── variables.css      # Variáveis :root (cores, bordas)
+    │   ├── base.css           # Reset, corpo, fontes
+    │   ├── layout.css         # Layout (app, header, player, sidebar)
+    │   ├── components.css     # Componentes (chips, logos, fontes)
+    │   └── login.css          # Tela de login
+    └── js/
+        ├── config.js          # Constantes (API, DEMO, credenciais)
+        ├── state.js           # Estado global compartilhado
+        ├── auth.js            # Login / logout / sessão
+        ├── player.js          # Player HLS (hls.js) + overlay
+        ├── ui.js              # Renderização de canais, busca
+        └── main.js            # Orquestração / entry point
+```
 
 ---
 
-## Licença
+## 🎨 Design
+
+- **CSS modular e organizado** em arquivos separados por responsabilidade
+- **Tema escuro** com fundo degradê dinâmico
+- **Glassmorphism** nos painéis e overlays
+- **Animações suaves** de entrada, hover e foco
+- **Responsivo:** 1 coluna no mobile, 2 colunas (player + lista) no desktop
+- **Acessibilidade:** foco visível, `prefers-reduced-motion`, labels ARIA
+
+---
+
+## 🔑 Credenciais de demonstração
+
+| Campo | Valor |
+|-------|-------|
+| 👤 Usuário | `admin` |
+| 🔒 Senha | `admin` |
+
+A sessão é mantida no `localStorage` do navegador. Para sair, clique no botão **Sair** no topo da página.
+
+---
+
+## 📡 Canais de teste incluídos
+
+Quando a API externa não responde, os canais de teste abaixo entram automaticamente:
+
+- 🎬 **Sintel · teste de reprodução** (720p)
+- 🐰 **Big Buck Bunny · teste de reprodução** (1080p)
+
+Você também pode colar qualquer link direto `.m3u8` ou `.mp4` no campo "Link direto" e assistir imediatamente.
+
+---
+
+## 🛠️ Tecnologias
+
+<div align="center">
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![HLS.js](https://img.shields.io/badge/HLS.js-000000?style=for-the-badge)
+
+</div>
+
+---
+
+## 📜 Licença
 
 MIT — sinta-se livre para usar, modificar e distribuir.
 
 ---
 
-Feito com ❤️ para assistir TV ao vivo no navegador.
+<div align="center">
+
+**Feito com ❤️ para assistir TV ao vivo no navegador.**
+
+</div>
