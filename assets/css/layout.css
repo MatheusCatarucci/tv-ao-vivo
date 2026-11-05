@@ -1,0 +1,172 @@
+.app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(14px, 3vw, 32px);
+  display: grid;
+  gap: 22px;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  align-items: start;
+}
+
+header {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.stage {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.screen {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #000;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #000;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-items: center;
+  text-align: center;
+  padding: 24px;
+  background: rgba(8, 10, 20, .82);
+  backdrop-filter: blur(6px);
+}
+
+.overlay.show {
+  display: grid;
+}
+
+.overlay p {
+  max-width: 36ch;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.overlay strong {
+  display: block;
+  color: var(--text);
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+.info {
+  padding: 18px 20px 20px;
+  display: grid;
+  gap: 14px;
+}
+
+aside {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  display: flex;
+  flex-direction: column;
+  max-height: min(78vh, 720px);
+  min-height: 0;
+}
+
+.tools {
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.tools input {
+  width: 100%;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+.tools input::placeholder {
+  color: var(--muted);
+}
+
+.direct {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.direct input {
+  flex: 1;
+}
+
+.direct button {
+  flex: none;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.list {
+  overflow-y: auto;
+  padding: 8px;
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  flex: 1;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  padding: 9px 10px;
+  cursor: pointer;
+  transition: background .15s;
+}
+
+.item:hover {
+  background: var(--panel-2);
+}
+
+.item[aria-current="true"] {
+  background: var(--panel-2);
+  border-color: var(--accent);
+}
+
+.empty {
+  padding: 28px 16px;
+  text-align: center;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  aside {
+    max-height: none;
+  }
+
+  .list {
+    max-height: 52vh;
+  }
+}
