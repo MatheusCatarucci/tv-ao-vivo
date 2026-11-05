@@ -1,0 +1,124 @@
+.login-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  backdrop-filter: blur(8px);
+}
+
+.login-card {
+  width: min(400px, 92vw);
+  padding: 40px 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--panel);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .45);
+  text-align: center;
+  animation: loginIn .45s ease-out;
+}
+
+.login-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin-bottom: 8px;
+}
+
+.login-brand span {
+  color: var(--accent);
+}
+
+.login-title {
+  color: var(--text);
+  font-size: 1.25rem;
+  margin: 6px 0 4px;
+}
+
+.login-sub {
+  color: var(--muted);
+  font-size: .95rem;
+  margin-bottom: 24px;
+}
+
+.field {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: .85rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.field input {
+  width: 100%;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 11px 14px;
+  color: var(--text);
+  font: inherit;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.field input:focus {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 3px rgba(61, 123, 255, .15);
+}
+
+.login-hint {
+  font-size: .8rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.btn-login {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #1a0f05;
+  font: inherit;
+  font-weight: 600;
+  padding: 11px;
+  cursor: pointer;
+  transition: transform .1s, filter .15s, opacity .15s;
+}
+
+.btn-login:active {
+  transform: scale(.985);
+}
+
+.btn-login:hover {
+  filter: brightness(1.08);
+}
+
+.btn-login:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
+.login-error {
+  color: var(--err);
+  font-size: .85rem;
+  margin-top: 14px;
+  min-height: 1.2em;
+}
+
+@keyframes loginIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
